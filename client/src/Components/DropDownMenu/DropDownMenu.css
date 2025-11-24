@@ -1,0 +1,10 @@
+.dropdown-menu-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+
+.dropdown-menu-wrapper p {
+  color: white;
+  font-size: 2rem;
+}
