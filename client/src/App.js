@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './Components/Navbar.jsx';
-import {BrowserRouter as Router, Routes, Route} from reactRouterDom;
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 function App() {
   return (
     <Router>
