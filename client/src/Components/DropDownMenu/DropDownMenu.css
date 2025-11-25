@@ -4,6 +4,10 @@
   background-color: #181818;
   padding-left: 1rem;
   padding-top: 11vh;
+  position: fixed;
+  left: 0;
+  top: 7.5vh;
+  z-index: 1000;
 }
 
 .dropdown-menu-wrapper ul li {
