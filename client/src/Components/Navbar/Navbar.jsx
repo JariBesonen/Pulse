@@ -1,11 +1,11 @@
 import React from 'react'
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ toggleDropdownMenu }) {
   return (
     <div className='nav'>
       <ul className="nav-ul-left">
-         <button className="nav-mobile-menu-btn">
+         <button onClick={toggleDropdownMenu} className="nav-mobile-menu-btn">
             <svg className='mobile-hamburger-icon' width="23" height="10" viewBox="0 0 23 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                <rect width="23" height="2" rx="1" fill="white"/>
                <rect y="8" width="23" height="2" rx="1" fill="white"/>
