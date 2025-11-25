@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import DropDownMenu from "./Components/DropDownMenu/DropDownMenu.jsx";
+import Home from "./Pages/Home/Home.jsx";
 
 function App() {
   
@@ -17,12 +18,13 @@ function App() {
     <Router>
       
       <Navbar toggleDropdownMenu={toggleDropdownMenu} />
-
+      
       {menuDropdownVisible && (
         <DropDownMenu />
       )}
+
       <Routes>
-        <Route />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
