@@ -6,6 +6,9 @@ import Navbar from "./Components/Navbar/Navbar.jsx";
 import DropDownMenu from "./Components/DropDownMenu/DropDownMenu.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
+import Create from "./Pages/Create/Create.jsx";
+import Explore from "./Pages/Explore/Explore.jsx";
+import Settings from "./Pages/Settings/Settings.jsx";
 
 function App() {
   const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
@@ -23,6 +26,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );
