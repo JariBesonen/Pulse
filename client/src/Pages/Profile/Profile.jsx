@@ -3,8 +3,8 @@ import './Profile.css';
 
 function Profile() {
   return (
-    <div className='profilepage'>
-      <h1 className='profilepage-h1'>Profilepage</h1>
+    <div className='profile-page'>
+      <h1 className='profile-page-h1'>Profilepage</h1>
     </div>
   )
 }
