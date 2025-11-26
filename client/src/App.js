@@ -17,11 +17,17 @@ function App() {
     setMenuDropdownVisible((prev) => !prev);
   }
 
+  function closeDropdownMenu() {
+    setMenuDropdownVisible(false);
+  }
+
   return (
     <Router>
-      <Navbar toggleDropdownMenu={toggleDropdownMenu} />
+      <Navbar  
+        toggleDropdownMenu={toggleDropdownMenu} 
+      />
 
-      {menuDropdownVisible && <DropDownMenu />}
+      {menuDropdownVisible && <DropDownMenu closeDropdownMenu={closeDropdownMenu} />}
 
       <Routes>
         <Route path="/" element={<Home />} />
