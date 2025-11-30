@@ -2,33 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./DropDownMenu.css";
 
-function DropDownMenu() {
+function DropDownMenu({ closeDropdownMenu }) {
   
   return (
     <div className="dropdown-menu-wrapper">
       <ul>
         <li>
-          <Link to={"/"}>
+          <Link to={"/"} onClick={() => closeDropdownMenu()}>
             <p>Home</p>
           </Link>
         </li>
         <li>
-          <Link to={"/create"}>
+          <Link to={"/create"} onClick={() => closeDropdownMenu()}>
             <p>Create</p>
           </Link>
         </li>
         <li>
-          <Link to={"/explore"}>
+          <Link to={"/explore"} onClick={() => closeDropdownMenu()}>
             <p>Explore</p>
           </Link>
         </li>
         <li>
-          <Link to={"/profile"}>
+          <Link to={"/profile"} onClick={() => closeDropdownMenu()}>
             <p>Profile</p>
           </Link>
         </li>
         <li>
-          <Link to={"/settings"}>
+          <Link to={"/settings"} onClick={() => closeDropdownMenu()}>
             <p>Settings</p>
           </Link>
         </li>
