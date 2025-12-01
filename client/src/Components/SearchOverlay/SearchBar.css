@@ -1,0 +1,40 @@
+.search-bar {
+   width: 75vw;
+   height: 6vh;
+   background-color: #292929;
+   border: 2px solid #B1B1B1;
+   border-radius: 25px;
+   overflow: hidden;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   position: relative;
+}
+
+.search-bar-input {
+   width: 65%;
+   height: 100%;
+   background-color: transparent;
+   border: none;
+   padding-left: 1rem;
+   color: white;
+}
+
+.search-bar-input:focus {
+   outline: none;
+}
+
+.search-bar-clear {
+   font-size: 0.9rem;
+   font-weight: 200;
+   color: white;
+   position: absolute;
+   right: 2.75rem;
+}
+
+.search-bar-search-icon {
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   right: 1rem;
+}
