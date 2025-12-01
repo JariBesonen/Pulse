@@ -9,6 +9,8 @@ import Profile from "./Pages/Profile/Profile.jsx";
 import Create from "./Pages/Create/Create.jsx";
 import Explore from "./Pages/Explore/Explore.jsx";
 import Settings from "./Pages/Settings/Settings.jsx";
+import Login from "./Pages/Login/Login.jsx";
+import Register from "./Pages/Register/Register.jsx";
 
 function App() {
   const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
@@ -34,6 +36,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/create" element={<Create />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
