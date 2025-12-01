@@ -9,11 +9,11 @@ function Login() {
         <label htmlFor="login-username-input">username</label>
         <input type="text" id="login-username-input" />
         <label htmlFor="login-pasword-input">password</label>
-        <input type="text" id="login-password-input" />
+        <input type="password" id="login-password-input" />
         <button className="login-btn">login</button>
         <Link to={"/register"}>
           <span className="login-form-register-link">
-            Don't have an account? Register
+            don't have an account? register
           </span>
         </Link>
       </form>
