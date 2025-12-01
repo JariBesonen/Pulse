@@ -1,0 +1,23 @@
+.post-action-btn {
+   padding: 0.5rem 0.75rem;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   background-color: black;
+   border: none;
+   border-radius: 25px;
+   color: white;
+   gap: 10px;
+   cursor: pointer;
+}
+
+.post-action-count {
+   font-size: 1.1rem;
+   font-weight: 500;
+}
+
+.post-action-icon {
+   width: 19px;
+   height: 19px;
+}
