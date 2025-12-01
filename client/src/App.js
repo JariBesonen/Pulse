@@ -29,6 +29,10 @@ function App() {
     setSearchActivated(true);
   }
 
+  function closeSearch() {
+    setSearchActivated(false);
+  }
+
   return (
     <Router>
       <Navbar  
@@ -37,7 +41,7 @@ function App() {
       />
 
       {searchActivated && (
-        <SearchOverlay />
+        <SearchOverlay closeSearch={closeSearch} />
       )}
 
       {menuDropdownVisible && <DropDownMenu closeDropdownMenu={closeDropdownMenu} />}

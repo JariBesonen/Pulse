@@ -3,14 +3,21 @@ import './SearchOverlay.css';
 import SearchBar from './SearchBar';
 import { useState } from 'react';
 
-function SearchOverlay() {
+function SearchOverlay({ closeSearch }) {
    
    const [searchValue, setSearchValue] = useState('');
    
   
    return (
     <div className='search-overlay'>
-      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      <div className='search-overlay-search-div'>
+         
+         <SearchBar 
+            searchValue={searchValue} 
+            setSearchValue={setSearchValue} 
+         />
+         <button onClick={closeSearch} className='search-overlay-close-search'>cancel</button>
+      </div>
     </div>
   )
 }
