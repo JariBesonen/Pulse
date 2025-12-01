@@ -4,7 +4,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Logout from "../Logout/Logout";
 
-function Navbar({ toggleDropdownMenu }) {
+function Navbar({ toggleDropdownMenu, openSearch }) {
   //we'll later switch to cookies but token will do for now
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
@@ -53,7 +53,7 @@ function Navbar({ toggleDropdownMenu }) {
       </ul>
 
       <ul className="nav-ul-right">
-        <button className="nav-open-search-btn nav-btn">
+        <button onClick={openSearch} className="nav-open-search-btn nav-btn">
           <svg
             className="open-search-icon"
             width="17"
