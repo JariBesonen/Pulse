@@ -79,6 +79,8 @@ function Navbar({ toggleDropdownMenu }) {
           </Link>
         </button>
 
+        <button><Link to={'/login'}><span>Login</span></Link></button>
+
         <button className="nav-open-profile-btn nav-btn">
           <Link to="/profile">
             <div className="profile-picture"></div>
