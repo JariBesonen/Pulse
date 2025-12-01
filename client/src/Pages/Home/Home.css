@@ -1,8 +1,5 @@
 .home-page {
    width: 100vw;
-   height: 100vh;
-   height: auto;
-   height: 110vh;
    background-color: #181818;
 }
 
@@ -17,10 +14,7 @@
 
 .home-page-feed-ul {
    width: 100vw;
-   height: auto;
-   position: absolute;
-   top: 8rem;
-   left: 0;
+   margin-top: 8rem;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
