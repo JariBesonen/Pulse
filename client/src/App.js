@@ -11,9 +11,11 @@ import Explore from "./Pages/Explore/Explore.jsx";
 import Settings from "./Pages/Settings/Settings.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
+import SearchOverlay from "./Components/SearchOverlay/SearchOverlay.jsx";
 
 function App() {
   const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
+  const [searchActivated, setSearchActivated] = useState(true);
 
   function toggleDropdownMenu() {
     setMenuDropdownVisible((prev) => !prev);
@@ -23,11 +25,24 @@ function App() {
     setMenuDropdownVisible(false);
   }
 
+  function openSearch() {
+    setSearchActivated(true);
+  }
+
+  function closeSearch() {
+    setSearchActivated(false);
+  }
+
   return (
     <Router>
       <Navbar  
-        toggleDropdownMenu={toggleDropdownMenu} 
+        toggleDropdownMenu={toggleDropdownMenu}
+        openSearch={openSearch}
       />
+
+      {searchActivated && (
+        <SearchOverlay closeSearch={closeSearch} searchActivated={searchActivated} />
+      )}
 
       {menuDropdownVisible && <DropDownMenu closeDropdownMenu={closeDropdownMenu} />}
 

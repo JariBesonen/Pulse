@@ -1,0 +1,30 @@
+import React, { act } from 'react';
+import './SearchBar.css';
+
+function SearchBar({ 
+   searchValue, 
+   setSearchValue,
+   activateSearch,
+   searchBarRef 
+
+}) {
+
+   return (
+    <div onClick={activateSearch} className='search-bar'>
+      <input ref={searchBarRef} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className='search-bar-input' type="text" placeholder='Search Pulse' />
+      
+      {searchValue && (
+         <span onClick={() => setSearchValue('')} className='search-bar-clear'>clear</span>
+      )}
+
+      <svg className='search-bar-search-icon' width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path 
+            d="M8.93794 4.4681C8.93794 5.45408 8.6178 6.36489 8.07852 7.10384L10.7986 9.82551C11.0671 10.094 11.0671 10.5301 10.7986 10.7986C10.53 11.0671 10.0939 11.0671 9.82528 10.7986L7.10523 8.07694C6.36613 8.61612 5.45515 8.93619 4.46897 8.93619C2.00029 8.93619 0 6.93629 0 4.4681C0 1.9999 2.00029 0 4.46897 0C6.93764 0 8.93794 1.9999 8.93794 4.4681ZM4.46897 7.56139C4.87527 7.56139 5.27758 7.48138 5.65295 7.32593C6.02832 7.17048 6.36939 6.94263 6.65669 6.65539C6.94398 6.36815 7.17188 6.02715 7.32736 5.65185C7.48284 5.27655 7.56287 4.87431 7.56287 4.4681C7.56287 4.06188 7.48284 3.65964 7.32736 3.28434C7.17188 2.90905 6.94398 2.56804 6.65669 2.2808C6.36939 1.99357 6.02832 1.76571 5.65295 1.61026C5.27758 1.45481 4.87527 1.3748 4.46897 1.3748C4.06267 1.3748 3.66035 1.45481 3.28498 1.61026C2.90961 1.76571 2.56854 1.99357 2.28125 2.2808C1.99395 2.56804 1.76606 2.90905 1.61058 3.28434C1.45509 3.65964 1.37507 4.06188 1.37507 4.4681C1.37507 4.87431 1.45509 5.27655 1.61058 5.65185C1.76606 6.02715 1.99395 6.36815 2.28125 6.65539C2.56854 6.94263 2.90961 7.17048 3.28498 7.32593C3.66035 7.48138 4.06267 7.56139 4.46897 7.56139Z" 
+            fill={!searchValue ? '#B3B3B3' : '#fff'}
+         />
+      </svg>
+    </div>
+  )
+}
+
+export default SearchBar;
