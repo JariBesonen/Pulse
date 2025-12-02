@@ -6,7 +6,7 @@ import { useState } from 'react';
 function SearchOverlay({ closeSearch }) {
    
    const [searchValue, setSearchValue] = useState('');
-   
+
   
    return (
     <div className='search-overlay'>
@@ -17,6 +17,48 @@ function SearchOverlay({ closeSearch }) {
             setSearchValue={setSearchValue} 
          />
          <button onClick={closeSearch} className='search-overlay-close-search'>cancel</button>
+      </div>
+
+      <div className="so-suggestions-div">
+         <div className="so-section">
+            <h2 className='so-section-header'>Suggestions</h2>
+            
+            <ul className="so-list">
+               <li>
+                  <span>music</span>
+               </li>
+               <li>
+                  <span>musical instruments</span>
+               </li>
+            </ul>
+         </div>
+         <div className="so-section">
+            <h2 className='so-section-header'>Recent Searches</h2>
+            
+            <ul className="so-list">
+               <li>
+                  <span>music</span>
+               </li>
+               <li>
+                  <span>language learning</span>
+               </li>
+            </ul>
+         </div>
+         <div className="so-section">
+            <h2 className='so-section-header'>Trending</h2>
+            
+            <ul className="so-list">
+               <li>
+                  <span>memes</span>
+               </li>
+               <li>
+                  <span>politics</span>
+               </li>
+               <li>
+                  <span>nature</span>
+               </li>
+            </ul>
+         </div>
       </div>
     </div>
   )
