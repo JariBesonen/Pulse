@@ -15,7 +15,7 @@ import SearchOverlay from "./Components/SearchOverlay/SearchOverlay.jsx";
 
 function App() {
   const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
-  const [searchActivated, setSearchActivated] = useState(true);
+  const [searchActivated, setSearchActivated] = useState(false);
 
   function toggleDropdownMenu() {
     setMenuDropdownVisible((prev) => !prev);
