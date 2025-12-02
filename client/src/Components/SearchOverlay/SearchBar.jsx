@@ -1,17 +1,14 @@
 import React, { act } from 'react';
 import './SearchBar.css';
-import { useState, useRef } from 'react';
 
-function SearchBar({ searchValue, setSearchValue }) {
+function SearchBar({ 
+   searchValue, 
+   setSearchValue,
+   activateSearch,
+   searchBarRef 
 
-   const searchBarRef = useRef(); 
+}) {
 
-   function activateSearch() {
-      if (searchBarRef.current) {
-         searchBarRef.current.focus();
-      }
-   }
-   
    return (
     <div onClick={activateSearch} className='search-bar'>
       <input ref={searchBarRef} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className='search-bar-input' type="text" placeholder='Search Pulse' />

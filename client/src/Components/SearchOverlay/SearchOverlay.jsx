@@ -1,12 +1,23 @@
 import React from 'react';
 import './SearchOverlay.css';
 import SearchBar from './SearchBar';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-function SearchOverlay({ closeSearch }) {
+function SearchOverlay({ closeSearch, searchActivated }) {
    
    const [searchValue, setSearchValue] = useState('');
 
+   const searchBarRef = useRef(); 
+   
+   function activateSearch() {
+      if (searchBarRef.current) {
+         searchBarRef.current.focus();
+      }
+   }
+
+   useEffect(() => {
+      activateSearch();
+   }, [searchActivated]);
   
    return (
     <div className='search-overlay'>
@@ -15,6 +26,8 @@ function SearchOverlay({ closeSearch }) {
          <SearchBar 
             searchValue={searchValue} 
             setSearchValue={setSearchValue} 
+            activateSearch={activateSearch}
+            searchBarRef={searchBarRef}
          />
          <button onClick={closeSearch} className='search-overlay-close-search'>cancel</button>
       </div>

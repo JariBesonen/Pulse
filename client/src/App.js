@@ -41,7 +41,7 @@ function App() {
       />
 
       {searchActivated && (
-        <SearchOverlay closeSearch={closeSearch} />
+        <SearchOverlay closeSearch={closeSearch} searchActivated={searchActivated} />
       )}
 
       {menuDropdownVisible && <DropDownMenu closeDropdownMenu={closeDropdownMenu} />}
