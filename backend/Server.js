@@ -3,9 +3,10 @@ const app = express();
 const cors = require("cors");
 const helmet = require('helmet');
 const PORT = 5000;
+const corsOptions = require('./Middleware/corsOptions');
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 
 app.get("/health", (req, res) => {
