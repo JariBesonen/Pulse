@@ -6,10 +6,12 @@ const PORT = 5000;
 const corsOptions = require('./Middleware/corsOptions');
 const notFound = require('./Middleware/notFound');
 const handleError = require('./Middleware/errorHandler');
+const apiLimiter = require('./Middleware/rateLimit');
 
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(helmet());
+app.use(apiLimiter);
 
 app.get("/health", (req, res) => {
   res.send("server is listening..");
