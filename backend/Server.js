@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const PORT = 5000;
 const corsOptions = require('./Middleware/corsOptions');
 const notFound = require('./Middleware/notFound');
+const handleError = require('./Middleware/errorHandler');
 
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -15,6 +16,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use(notFound);
+app.use(handleError);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
