@@ -7,7 +7,7 @@ const register = async (req, res, next) => {
    const role = 'user';
 
    try {
-      const userExists = await User.checkUserExists(email);
+      const userExists = await User.findUserByEmail(email);
 
       if (userExists) {
          return res.status(409).json({ message: 'User already exists' });
@@ -39,5 +39,5 @@ const register = async (req, res, next) => {
 }
 
 module.exports = {
-   register
+   register,
 }
