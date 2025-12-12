@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 
 const register = async (req, res, next) => {
    const { username, email, password } = req.body;
-   const role = 'user';
 
    try {
       const userExists = await User.findUserByEmail(email);
@@ -15,7 +14,7 @@ const register = async (req, res, next) => {
 
       const hashedPassword = await bcrypt.hash(password, process.env.SALT_ROUNDS);
 
-      const registeredUser = await User.registerUser(username, email, hashedPassword, role);
+      const registeredUser = await User.registerUser(username, email, hashedPassword);
 
       if (!registeredUser) {
          return res.status(500).json({ message: 'Failed to register user' });
