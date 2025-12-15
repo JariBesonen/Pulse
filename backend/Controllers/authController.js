@@ -34,7 +34,8 @@ const register = async (req, res, next) => {
       });
 
    } catch (err) {
-
+      //23505 is the postgres error for when a value should be unique but is instead duplicate (user enters a username / email that already exists)
+      //without this catch, we would be throwing a vague 500 error to errorHandler.js and instead, we're catching it professionaly as a 409
       if (err.code === '23505') {
          return res.status(409).json({
             success: false,
