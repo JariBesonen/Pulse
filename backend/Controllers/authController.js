@@ -1,6 +1,7 @@
 const User = require('../Models/authModel.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { success } = require('zod');
 
 const register = async (req, res, next) => {
    const { username, email, password } = req.body;
@@ -12,7 +13,7 @@ const register = async (req, res, next) => {
          return res.status(409).json({ message: 'User already exists' });
       };
 
-      const hashedPassword = await bcrypt.hash(password, process.env.SALT_ROUNDS);
+      const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
 
       const registeredUser = await User.registerUser(username, email, hashedPassword);
 
@@ -33,6 +34,14 @@ const register = async (req, res, next) => {
       });
 
    } catch (err) {
+
+      if (err.code === '23505') {
+         return res.status(409).json({
+            success: false,
+            error: 'Username or email already exists'
+         })
+      }
+
       next(err);
    }
 }

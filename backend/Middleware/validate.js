@@ -1,7 +1,7 @@
 const { ZodError } = require('zod');
 
 const validateRequest = (schema) => (req, res, next) => {
-   try {
+   try {      
       const result = schema.parse(req.body);
       req.body = result;
       
