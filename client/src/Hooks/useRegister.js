@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
-import { registerUser } from "../../../backend/Models/authModel"
+import { register } from "../Api/authApi";
 
 export const useRegister = () => {
    return useMutation ({
-      mutationFn: registerUser
+      mutationFn: register
    });
 };
