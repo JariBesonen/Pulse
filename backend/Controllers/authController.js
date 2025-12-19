@@ -1,7 +1,6 @@
 const User = require('../Models/authModel.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { success } = require('zod');
 
 const register = async (req, res, next) => {
    const { username, email, password } = req.body;
@@ -47,6 +46,38 @@ const register = async (req, res, next) => {
    }
 }
 
+const login = async (req, res, next) => {
+   const { email, password } = req.body;
+
+   try {
+      const userExists = await User.findUserByEmail(email);
+
+      if (!userExists) {
+         return res.status(404).json({ success: false, message: 'login failed. User doesnt exist' });
+      };
+
+      const hashedPassword = userExists.password;
+
+      const passwordMatches = await bcrypt.compare(password, hashedPassword);
+
+      if (!passwordMatches) {
+         return res.status(409).json({ success: false, message: 'login failed. Please try again' });
+      };
+
+      const token = jwt.sign(
+         { id: userExists.id },
+         process.env.SECRET_KEY,
+         { expiresIn: '7d' }
+      );
+
+      return res.status(200).json({ token: token, user: userExists });
+   } catch (err) {
+      
+      next(err);
+   }
+}
+
 module.exports = {
    register,
+   login,
 }
