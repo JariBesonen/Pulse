@@ -38,7 +38,6 @@
   width: 70%;
   font-size: 1.2rem;
   padding-left: 0.5rem;
-  border: none;
 }
 
 .register-btn {
@@ -59,3 +58,12 @@
     text-decoration: underline;
 }
 
+.auth-alert-msg {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: red;
+}
+
+.invalid {
+  border: 1px solid red;
+}

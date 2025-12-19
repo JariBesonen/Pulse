@@ -3,6 +3,6 @@ import { register } from "../Api/authApi";
 
 export const useRegister = () => {
    return useMutation ({
-      mutationFn: register
+      mutationFn: register,
    });
 };
