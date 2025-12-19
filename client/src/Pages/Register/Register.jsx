@@ -67,6 +67,7 @@ function Register() {
         
         <label htmlFor="register-username-label">username
           <input 
+            className={errors.username ? 'field-error' : ''}
             onChange={(e) => setUsername(e.target.value)} 
             value={username} 
             type="text" 
@@ -80,7 +81,7 @@ function Register() {
         
         <label htmlFor="register-email-label">email
           <input 
-            // className="invalid"
+            className={errors.email ? 'field-error' : ''}
             onChange={(e) => setEmail(e.target.value)} 
             value={email}
             type="email" 
@@ -94,6 +95,7 @@ function Register() {
         <label htmlFor="register-pasword-label">password
           
           <input 
+            className={errors.password ? 'field-error' : ''}
             onChange={(e) => setPassword(e.target.value)} 
             value={password} 
             type="password" 
