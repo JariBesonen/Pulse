@@ -25,23 +25,27 @@ function Register() {
       username: '',
       email: '',
       password: ''
-    }
+    };
+
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!username) {
       newErrors.username = 'Username is required';
-    } else if (username.length <= 6 || username.length >= 24) {
+    } else if (username.length <= 3 || username.length >= 30) {
       newErrors.username = 'username must be 6-24 characters';
     };
 
     if (!email) {
       newErrors.email = 'email is required';
-    } else if (email.length <= 6 || email.length >= 24) {
+    } else if (email.length >= 254) {
       newErrors.email = 'email must be 6-24 characters';
-    };
+    } else if (!EMAIL_REGEX.test(email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
 
     if (!password) {
       newErrors.password = 'password is required';
-    } else if (password.length <= 6 || password.length >= 24) {
+    } else if (password.length <= 8 || password.length >= 64) {
       newErrors.password = 'password must be 6-24 characters';
     };
 
