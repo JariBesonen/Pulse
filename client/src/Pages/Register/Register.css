@@ -16,6 +16,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  text-align: center;
 }
 
 .register-form h2 {
@@ -26,6 +27,10 @@
 .register-form label {
   color: white;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .register-form input {
@@ -33,7 +38,6 @@
   width: 70%;
   font-size: 1.2rem;
   padding-left: 0.5rem;
-  border: none;
 }
 
 .register-btn {
@@ -54,3 +58,12 @@
     text-decoration: underline;
 }
 
+.auth-alert-msg {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: red;
+}
+
+.field-error {
+  border: 1px solid red;
+}

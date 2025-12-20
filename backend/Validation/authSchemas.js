@@ -1,8 +1,9 @@
 const { z } = require('zod');
 
 const authSchema = z.object({
-   email: z.string().email(),
-   password: z.string().min(6).max(18)
+   username: z.string().min(6),
+   email: z.string().min(6),
+   password: z.string().min(6)
 })
 
 module.exports = {
