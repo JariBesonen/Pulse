@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../Hooks/useLogin";
+import { AuthContext } from "../../Context/authContext";
 
 
 function Login() {
@@ -15,8 +16,9 @@ function Login() {
 
   const { mutate, isLoading, error, data } = useLogin();
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const newErrors = {
@@ -49,7 +51,13 @@ function Login() {
     mutate(
       { email, password }, 
       {
-        onSuccess: () => navigate('/')
+        onSuccess: (data) => {
+          login(data);
+          navigate('/')
+        },
+        onError: (err) => {
+          console.error(err);
+        }
       }
     );
     return;
@@ -88,7 +96,7 @@ function Login() {
             )}
         </label>
         
-        <button onClick={handleSubmit} type="submit" className="login-btn">{isLoading ? 'Logging in' : 'login'}</button>
+        <button onClick={handleLogin} type="submit" className="login-btn">{isLoading ? 'Logging in' : 'login'}</button>
         
         <Link to={"/register"}>
           <span className="login-form-login-link">

@@ -31,7 +31,7 @@ function Register() {
 
     if (!username) {
       newErrors.username = 'Username is required';
-    } else if (username.length <= 3 || username.length >= 30) {
+    } else if (username.length <= 2 || username.length >= 30) {
       newErrors.username = 'username must be 6-24 characters';
     };
 
