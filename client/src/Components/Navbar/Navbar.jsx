@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import Logout from "../Logout/Logout";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/authContext";
 
