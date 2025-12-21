@@ -18,7 +18,7 @@ function Register() {
   const { mutate, isLoading, error, data } = useRegister();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     const newErrors = {
@@ -58,7 +58,12 @@ function Register() {
     mutate(
       { username, email, password }, 
       {
-        onSuccess: () => navigate('/')
+        onSuccess: () => {
+          navigate('/');
+        },
+        onError: (err) => {
+          console.error(err);
+        }
       }
     );
     return;
@@ -111,7 +116,7 @@ function Register() {
             )}
         </label>
         
-        <button onClick={handleSubmit} type="submit" className="register-btn">{isLoading ? 'registering' : 'register'}</button>
+        <button onClick={handleRegister} type="submit" className="register-btn">{isLoading ? 'registering' : 'register'}</button>
         
         <Link to={"/login"}>
           <span className="register-form-login-link">

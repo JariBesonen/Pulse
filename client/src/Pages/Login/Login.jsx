@@ -53,7 +53,7 @@ function Login() {
       {
         onSuccess: (data) => {
           login(data);
-          navigate('/')
+          navigate('/');
         },
         onError: (err) => {
           console.error(err);
