@@ -88,8 +88,8 @@ function Login() {
             id="login-password-input"
             placeholder="password" />
 
-            {passwordShown && (
-              <button onClick={() => setPasswordShown(false)} className="hide-password-btn">
+            {!passwordShown && (
+              <button onClick={() => setPasswordShown(true)} className="hide-password-btn">
                 <svg 
                   width="18" 
                   height="18" 
@@ -103,8 +103,8 @@ function Login() {
               </button>
             )}
 
-            {!passwordShown && (
-              <button onClick={() => setPasswordShown(true)} className="show-password-btn">
+            {passwordShown && (
+              <button onClick={() => setPasswordShown(false)} className="show-password-btn">
                 <svg 
                   width="18" 
                   height="18" 
