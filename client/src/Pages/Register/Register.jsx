@@ -18,7 +18,7 @@ function Register() {
   const { mutate, isLoading, error, data } = useRegister();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     const newErrors = {
@@ -31,7 +31,7 @@ function Register() {
 
     if (!username) {
       newErrors.username = 'Username is required';
-    } else if (username.length <= 3 || username.length >= 30) {
+    } else if (username.length <= 2 || username.length >= 30) {
       newErrors.username = 'username must be 6-24 characters';
     };
 
@@ -58,7 +58,12 @@ function Register() {
     mutate(
       { username, email, password }, 
       {
-        onSuccess: () => navigate('/')
+        onSuccess: () => {
+          navigate('/');
+        },
+        onError: (err) => {
+          console.error(err);
+        }
       }
     );
     return;
@@ -111,7 +116,7 @@ function Register() {
             )}
         </label>
         
-        <button onClick={handleSubmit} type="submit" className="register-btn">{isLoading ? 'registering' : 'register'}</button>
+        <button onClick={handleRegister} type="submit" className="register-btn">{isLoading ? 'registering' : 'register'}</button>
         
         <Link to={"/login"}>
           <span className="register-form-login-link">

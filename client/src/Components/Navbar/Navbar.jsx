@@ -2,15 +2,13 @@ import React from "react";
 import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import Logout from "../Logout/Logout";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/authContext";
 
 function Navbar({ toggleDropdownMenu, openSearch }) {
   //we'll later switch to cookies but token will do for now
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
-  const handleLogout = () => {
-    setIsLoggedIn(true);
-  };
   return (
     <div className="nav">
       <ul className="nav-ul-left">
@@ -88,7 +86,7 @@ function Navbar({ toggleDropdownMenu, openSearch }) {
         </button>
 
         {isLoggedIn ? (
-          <Logout onLogout={handleLogout} />
+          <button onClick={logout}>Logout</button>
         ) : (
           <button>
             <Link className="nav-auth-btn" to={"/login"}>
