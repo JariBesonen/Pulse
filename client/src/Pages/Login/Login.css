@@ -28,14 +28,13 @@
   color: white;
   font-size: 1.4rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
 .login-form input {
   height: 2rem;
-  width: 70%;
   font-size: 1.2rem;
   padding-left: 0.5rem;
 }
@@ -67,3 +66,40 @@
 .field-error {
   border: 1px solid red;
 }
+
+.login-password-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 85%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+
+}
+
+.show-password-btn, .hide-password-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 8px;
+  top: 6px;
+}
+
+.login-field-header {
+  color: white;
+}
+
+#login-password-input:focus, #login-email-input:focus {
+  outline: none;
+}
+
