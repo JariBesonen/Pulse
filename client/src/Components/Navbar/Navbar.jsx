@@ -96,7 +96,7 @@ function Navbar({ toggleDropdownMenu, openSearch }) {
         )}
 
         <button className="nav-open-profile-btn nav-btn">
-          <Link to="/profile">
+          <Link to="/profileposts">
             <div className="profile-picture"></div>
           </Link>
         </button>
