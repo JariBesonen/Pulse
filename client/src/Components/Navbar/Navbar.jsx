@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -68,7 +68,7 @@ function Navbar({ toggleDropdownMenu, openSearch }) {
         </button>
 
         <button className="nav-open-create-btn nav-btn">
-          <Link to="/create">
+          <Link to="/createforum">
             <svg
               className="open-create-btn-icon"
               width="17"

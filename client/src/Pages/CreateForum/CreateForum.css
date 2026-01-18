@@ -1,0 +1,48 @@
+.create-forum-page {
+   width: 100vw;
+   height: 92vh;
+   background-color: #181818;
+   margin-top: 8vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.create-forum-form {
+   width: 90%;
+   height: 80%;
+   border: 1px solid white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.create-forum-form h2 {
+   color: white;
+   font-size: 2.3rem;
+}
+
+.create-forum-form label {
+   color: white;
+}
+
+.create-forum-form input {
+   width: 65%;
+   height: 2rem;
+   font-size: 1.1rem;
+   padding-left: 0.5rem;
+}
+
+.create-forum-form textarea {
+   width: 65%;
+   height: 4rem;
+   font-size: 1.1rem;
+   padding-left: 0.5rem;
+}
+
+.create-forum-btn {
+   width: 40%;
+   height: 1.7rem;
+   font-size: 1.1rem;
+}

@@ -13,7 +13,7 @@ function DropDownMenu({ closeDropdownMenu }) {
           </Link>
         </li>
         <li>
-          <Link to={"/create"} onClick={() => closeDropdownMenu()}>
+          <Link to={"/createforum"} onClick={() => closeDropdownMenu()}>
             <p>Create</p>
           </Link>
         </li>
@@ -23,7 +23,7 @@ function DropDownMenu({ closeDropdownMenu }) {
           </Link>
         </li>
         <li>
-          <Link to={"/profile"} onClick={() => closeDropdownMenu()}>
+          <Link to={"/profileposts"} onClick={() => closeDropdownMenu()}>
             <p>Profile</p>
           </Link>
         </li>
