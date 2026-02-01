@@ -1,83 +1,88 @@
-const User = require('../Models/authModel.js');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const User = require("../Models/authModel.js");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const register = async (req, res, next) => {
-   const { username, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-   try {
-      const userExists = await User.findUserByEmail(email);
+  try {
+    const userExists = await User.findUserByEmail(email);
 
-      if (userExists) {
-         return res.status(409).json({ message: 'User already exists' });
-      };
+    if (userExists) {
+      return res.status(409).json({ message: "User already exists" });
+    }
 
-      const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
+    const hashedPassword = await bcrypt.hash(
+      password,
+      Number(process.env.SALT_ROUNDS),
+    );
 
-      const registeredUser = await User.registerUser(username, email, hashedPassword);
+    const registeredUser = await User.registerUser(
+      username,
+      email,
+      hashedPassword,
+    );
 
-      if (!registeredUser) {
-         return res.status(500).json({ message: 'Failed to register user' });
-      };
+    if (!registeredUser) {
+      return res.status(500).json({ message: "Failed to register user" });
+    }
 
-      const token = jwt.sign(
-         { id: registeredUser.id },
-         process.env.SECRET_KEY,
-         { expiresIn: '7d' }
-      );
+    const token = jwt.sign({ id: registeredUser.id }, process.env.SECRET_KEY, {
+      expiresIn: "7d",
+    });
 
-      return res.status(201).json({ 
-         success: true, 
-         token: token, 
-         user: registeredUser, 
+    return res.status(201).json({
+      success: true,
+      token: token,
+      user: registeredUser,
+    });
+  } catch (err) {
+    //23505 is the postgres error for when a value should be unique but is instead duplicate (user enters a username / email that already exists)
+    //without this catch, we would be throwing a vague 500 error to errorHandler.js and instead, we're catching it professionaly as a 409
+    if (err.code === "23505") {
+      return res.status(409).json({
+        success: false,
+        error: "Username or email already exists",
       });
+    }
 
-   } catch (err) {
-      //23505 is the postgres error for when a value should be unique but is instead duplicate (user enters a username / email that already exists)
-      //without this catch, we would be throwing a vague 500 error to errorHandler.js and instead, we're catching it professionaly as a 409
-      if (err.code === '23505') {
-         return res.status(409).json({
-            success: false,
-            error: 'Username or email already exists'
-         })
-      }
-
-      next(err);
-   }
-}
+    next(err);
+  }
+};
 
 const login = async (req, res, next) => {
-   const { email, password } = req.body;
+  const { email, password } = req.body;
 
-   try {
-      const userExists = await User.findUserByEmail(email);
+  try {
+    const userExists = await User.findUserByEmail(email);
 
-      if (!userExists) {
-         return res.status(404).json({ success: false, message: 'login failed. User doesnt exist' });
-      };
+    if (!userExists) {
+      return res
+        .status(404)
+        .json({ success: false, message: "login failed. User doesnt exist" });
+    }
 
-      const hashedPassword = userExists.password;
+    const hashedPassword = userExists.password;
 
-      const passwordMatches = await bcrypt.compare(password, hashedPassword);
+    const passwordMatches = await bcrypt.compare(password, hashedPassword);
 
-      if (!passwordMatches) {
-         return res.status(409).json({ success: false, message: 'login failed. Please try again' });
-      };
+    if (!passwordMatches) {
+      return res
+        .status(409)
+        .json({ success: false, message: "login failed. Please try again" });
+    }
 
-      const token = jwt.sign(
-         { id: userExists.id },
-         process.env.SECRET_KEY,
-         { expiresIn: '7d' }
-      );
+    const token = jwt.sign({ id: userExists.id }, process.env.SECRET_KEY, {
+      expiresIn: "7d",
+    });
 
-      return res.status(200).json({ token: token, user: userExists });
-   } catch (err) {
-      
-      next(err);
-   }
-}
+    return res.status(200).json({ token: token, user: userExists });
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports = {
-   register,
-   login,
-}
+  register,
+  login,
+};

@@ -62,7 +62,7 @@ function Register() {
         onError: (err) => {
           console.error(err);
         },
-      }
+      },
     );
     return;
   };
